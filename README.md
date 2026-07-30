@@ -11,10 +11,9 @@ Elle permet aux membres de partager des articles, projets, événements, ressour
 - **Événements** — Création, inscription, suivi des participants
 - **Projets** — Showcase des projets open-source des membres
 - **Ressources** — Partages de ressources (vidéos, livres, outils)
-- **Annuaire** — Profils membres avec rôles (Admin, Collaborateur, Membre)
+- **Annuaire** — Profils membres avec rôles (Admin, Collaborateur, User, SuperAdmin)
 - **Partenaires** — Gestion des sponsors et partenaires
 - **Newsletter** — Inscription et envoi de newsletters
-- **Certificats** — Génération et gestion de certificats
 - **Messagerie** — Système de contact et notifications
 - **Authentification** — JWT + OAuth2 (Google, GitHub, Microsoft)
 

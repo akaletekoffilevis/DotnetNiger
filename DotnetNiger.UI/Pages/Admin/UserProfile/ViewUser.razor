@@ -55,7 +55,7 @@ else if (user is null)
         <AdminBreadcrumb />
         <div class="flex flex-col items-center justify-center py-20">
             <i class="fas fa-user-slash text-5xl text-slate-300 mb-4"></i>
-            <p class="text-lg text-slate-500">Utilisateur introuvable.</p>
+            <p class="text-lg text-subtitle">Utilisateur introuvable.</p>
             <button @onclick='() => Navigation.NavigateTo("/admin/Users")'
                     class="mt-4 inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-500">
                 <i class="fas fa-arrow-left"></i> Retour
@@ -70,7 +70,7 @@ else
 
         <div class="mb-6">
             <button @onclick='() => Navigation.NavigateTo("/admin/Users")'
-                    class="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 transition hover:text-indigo-600">
+                    class="inline-flex items-center gap-2 text-sm font-semibold text-body transition hover:text-indigo-600">
                 <i class="fas fa-arrow-left"></i> Retour aux utilisateurs
             </button>
         </div>
@@ -86,35 +86,35 @@ else
                     <div class="space-y-2 text-center">
                         <h2 class="text-xl sm:text-4xl font-semibold tracking-tight text-title">
                             @DisplayOrFallback(user.FullName, user.Username)</h2>
-                            <p class="text-lg text-slate-500">@DisplayPrimaryRole(user.Roles)</p>
+                            <p class="text-lg text-subtitle">@DisplayPrimaryRole(user.Roles)</p>
                         </div>
 
                         <div class="mt-7 space-y-3 text-sm text-slate-700">
                             <div
                                 class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-100 px-4 py-2">
-                                <i class="fas fa-map-marker-alt text-slate-500"></i>
-                                <span>@BuildLocation(user.City, user.Country)</span>
+                                <i class="fas fa-map-marker-alt text-subtitle"></i>
+                                <span class="text-subtitle">@BuildLocation(user.City, user.Country)</span>
                             </div>
                             <div
                                 class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-100 px-4 py-2">
-                                <i class="fas fa-envelope text-slate-500"></i>
-                                <span>@DisplayOrFallback(user.Email, "Email non renseigne")</span>
+                                <i class="fas fa-envelope text-subtitle"></i>
+                                <span class="text-subtitle">@DisplayOrFallback(user.Email, "Email non renseigne")</span>
                             </div>
                             <div
                                 class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-100 px-4 py-2">
-                                <i class="fas fa-phone text-slate-500"></i>
-                                <span>@DisplayOrFallback(user.PhoneNumber, "Telephone non renseigne")</span>
+                                <i class="fas fa-phone text-subtitle"></i>
+                                <span class="text-subtitle">@DisplayOrFallback(user.PhoneNumber, "Telephone non renseigne")</span>
                             </div>
                             <div
                                 class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-100 px-4 py-2">
-                                <i class="fas fa-calendar-alt text-slate-500"></i>
-                                <span>Membre depuis @FormatMemberSince(user.CreatedAt)</span>
+                                <i class="fas fa-calendar-alt text-subtitle"></i>
+                                <span class="text-subtitle">Membre depuis @FormatMemberSince(user.CreatedAt)</span>
                             </div>
                             <div
-                                class="inline-flex w-full items-center justify-center gap-2 rounded-full @(user.IsActive ? "bg-emerald-50 text-emerald-700" : "bg-slate-100 text-slate-600") px-4 py-2">
+                                class="inline-flex w-full items-center justify-center gap-2 rounded-full @(user.IsActive ? "bg-emerald-50 text-emerald-700" : "bg-slate-100 text-body") px-4 py-2">
                                 <span
                                 class="h-2.5 w-2.5 rounded-full @(user.IsActive ? "bg-emerald-500" : "bg-slate-400")"></span>
-                                <span>@(user.IsActive ? "En ligne" : "Hors ligne")</span>
+                                <span class="text-subtitle">@(user.IsActive ? "En ligne" : "Hors ligne")</span>
                             </div>
                         </div>
                     </section>
@@ -124,7 +124,7 @@ else
 
                         @if (SocialLinks.Count == 0)
                         {
-                            <p class="text-sm text-slate-500">Aucun lien social enregistré.</p>
+                            <p class="text-sm text-subtitle">Aucun lien social enregistré.</p>
                         }
                         else
                         {
@@ -143,21 +143,21 @@ else
                 </div>
 
                 <div class="space-y-6">
-                    <section class="rounded-lg   border-slate-200 bg-surface p-8 shadow-sm">
-                        <h2 class="mb-4 text-lg font-semibold tracking-tight text-slate-800">A propos</h2>
+                    <section class="rounded-lg border-slate-200 bg-surface p-8 shadow-sm">
+                        <h2 class="mb-4 text-lg font-semibold tracking-tight text-title">A propos</h2>
                         @if (!string.IsNullOrWhiteSpace(user.Bio))
                         {
-                            <div class="break-words text-lg leading-relaxed text-slate-600 prose prose-slate max-w-none">@(new
+                            <div class="break-words text-lg leading-relaxed text-body prose prose-slate max-w-none">@(new
                                                                                                                     MarkupString(HtmlSanitizer.Sanitize(user.Bio)))</div>
                             }
                     else
                             {
-                                <p class="max-w-4xl text-lg leading-relaxed text-slate-600">Aucune biographie renseignée.</p>
+                                <p class="max-w-4xl text-lg leading-relaxed text-body">Aucune biographie renseignée.</p>
                             }
                         </section>
 
                         <section class="rounded-lg   border-slate-200 bg-surface p-8 shadow-sm">
-                            <h2 class="mb-4 text-lg font-semibold tracking-tight text-slate-800">Competences et technologies</h2>
+                            <h2 class="mb-4 text-lg font-semibold tracking-tight text-title">Competences et technologies</h2>
                             @if (user.Skills is { Count: > 0 })
                             {
                                 <div class="flex flex-wrap gap-3">
@@ -169,11 +169,11 @@ else
                             }
                             else
                             {
-                                <p class="text-sm text-slate-500">Aucune compétence renseignée.</p>
+                                <p class="text-sm text-subtitle">Aucune compétence renseignée.</p>
                             }
                         </section>
 
-                        <section class="rounded-lg   border-slate-200 bg-surface p-6 shadow-sm">
+                        <section class="rounded-lg border-slate-200 bg-surface p-6 shadow-sm">
                             <h3 class="mb-4 text-lg font-semibold text-slate-700">Actions administrateur</h3>
                             <div class="flex flex-wrap gap-3">
                                 <button @onclick="ToggleStatusAsync"
@@ -198,19 +198,20 @@ else
                                     {
                                         <div
                                             class="absolute left-0 z-20 mt-2 w-56 rounded-lg   border-slate-200 bg-surface py-2 shadow-lg">
-                                            @foreach (var role in AvailableRoles)
+                                            @if (UnassignedRoles.Count == 0)
                                             {
-                                                var isAssigned = user.Roles?.Contains(role) == true;
-                                                <button @onclick="() => HandleChangeRoleAsync(role, isAssigned)"
-                                                        class="flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm transition hover:bg-slate-50 @(isAssigned ? "text-indigo-600 font-semibold" : "text-slate-700")">
-                                                    <i
-                                                    class="fas @(isAssigned ? "fa-check-circle text-indigo-500" : "fa-circle text-slate-300")"></i>
-                                                    @role
-                                                    @if (isAssigned)
-                                                    {
-                                                        <span class="ml-auto text-xs text-slate-400">assigné</span>
-                                                    }
-                                                </button>
+                                                <p class="px-4 py-2.5 text-xs text-gray-400 italic">Tous les rôles sont assignés.</p>
+                                            }
+                                            else
+                                            {
+                                                @foreach (var role in UnassignedRoles)
+                                                {
+                                                    <button @onclick="() => ShowConfirmRoleModal(role)"
+                                                            class="flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm text-slate-700 transition hover:bg-slate-50">
+                                                        <i class="fas fa-circle text-slate-300"></i>
+                                                        @role
+                                                    </button>
+                                                }
                                             }
                                         </div>
                                     }
@@ -222,6 +223,27 @@ else
             </div>
         }
 
+@if (showConfirmRoleModal)
+{
+    <div class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+        <div class="absolute inset-0 bg-black/40" @onclick="CancelConfirmRoleModal"></div>
+        <div class="relative w-full max-w-sm rounded-lg bg-surface p-4 sm:p-6 shadow-lg">
+            <h3 class="text-base font-semibold text-title">Changement de rôle</h3>
+            <p class="mt-2 text-sm text-gray-600">
+                Voulez-vous assigner le rôle <strong class="text-title">@pendingRoleName</strong> à cet utilisateur ?
+            </p>
+            <div class="mt-4 flex justify-end gap-2">
+                <button type="button"
+                        class="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-title transition hover:bg-gray-50"
+                        @onclick="CancelConfirmRoleModal">Annuler</button>
+                <button type="button"
+                        class="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white transition hover:bg-hover"
+                        @onclick="ConfirmRoleAsync">Confirmer</button>
+            </div>
+        </div>
+    </div>
+}
+
 @code {
     [Parameter]
     public Guid UserId { get; set; }
@@ -230,6 +252,9 @@ else
     private List<SocialLinkDto> SocialLinks => user?.SocialLinks ?? new();
     private bool isLoading = true;
     private bool showRoleMenu;
+    private bool showConfirmRoleModal;
+    private string pendingRoleName = string.Empty;
+    private Guid _loadedUserId;
 
     private readonly List<string> AvailableRoles = new()
     {
@@ -239,7 +264,23 @@ else
         "Member"
     };
 
+    private List<string> UnassignedRoles =>
+        AvailableRoles.Where(r => user?.Roles?.Contains(r) != true).ToList();
+
     protected override async Task OnInitializedAsync()
+    {
+        await LoadUserAsync();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (UserId != Guid.Empty && _loadedUserId != UserId)
+        {
+            await LoadUserAsync();
+        }
+    }
+
+    private async Task LoadUserAsync()
     {
         try
         {
@@ -247,6 +288,7 @@ else
         }
         finally
         {
+            _loadedUserId = UserId;
             isLoading = false;
         }
     }
@@ -294,23 +336,17 @@ else
         }
     }
 
-    private async Task HandleChangeRoleAsync(string role, bool isAssigned)
+    private async Task HandleChangeRoleAsync(string role)
     {
         if (user is null) return;
         showRoleMenu = false;
+        showConfirmRoleModal = false;
+        pendingRoleName = string.Empty;
 
         try
         {
-            if (isAssigned)
-            {
-                await UserService.RemoveRoleAsync(user.Id, role);
-                await NotificationService.SendNotificationAsync(user.Id, $"Le rôle \"{role}\" vous a été retiré.");
-            }
-            else
-            {
-                await UserService.AssignRoleAsync(user.Id, role);
-                await NotificationService.SendNotificationAsync(user.Id, $"Le rôle \"{role}\" vous a été attribué.");
-            }
+            await UserService.AssignRoleAsync(user.Id, role);
+            await NotificationService.SendNotificationAsync(user.Id, $"Le rôle \"{role}\" vous a été attribué.");
 
             ToastService.ShowToast("Rôle modifié avec succès.", ToastLevel.Success);
             user = await UserService.GetUserByIdAsync(UserId);
@@ -319,6 +355,26 @@ else
         {
             ToastService.ShowToast("Erreur lors du changement de rôle.", ToastLevel.Error);
         }
+    }
+
+    private void ShowConfirmRoleModal(string role)
+    {
+        showRoleMenu = false;
+        pendingRoleName = role;
+        showConfirmRoleModal = true;
+    }
+
+    private void CancelConfirmRoleModal()
+    {
+        showConfirmRoleModal = false;
+        pendingRoleName = string.Empty;
+    }
+
+    private async Task ConfirmRoleAsync()
+    {
+        if (string.IsNullOrEmpty(pendingRoleName)) return;
+        var role = pendingRoleName;
+        await HandleChangeRoleAsync(role);
     }
 
     private static string DisplayOrFallback(string? value, string fallback)

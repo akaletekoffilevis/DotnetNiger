@@ -11,7 +11,7 @@ Elle permet aux membres de partager des articles, projets, événements, ressour
 - **Événements** — Création, inscription, suivi des participants
 - **Projets** — Showcase des projets open-source des membres
 - **Ressources** — Partages de ressources (vidéos, livres, outils)
-- **Annuaire** — Profils membres avec rôles (Admin, Collaborateur,User, SuperAdmin)
+- **Annuaire** — Profils membres avec rôles (Admin, Collaborateur, User, SuperAdmin)
 - **Partenaires** — Gestion des sponsors et partenaires
 - **Newsletter** — Inscription et envoi de newsletters
 - **Messagerie** — Système de contact et notifications

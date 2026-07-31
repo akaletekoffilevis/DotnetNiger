@@ -11,7 +11,7 @@ public class ApiSettingsService : ApiServiceBase, ISettingsService
 {
     public ApiSettingsService(HttpClient http, ILogger<ApiSettingsService> logger) : base(http, logger) { }
 
-    public async Task<List<SiteSettingDto>> GetAllAsync()
+    public async Task<List<SiteSettingDto>> GetAllAsync(CancellationToken cancellationToken = default)
     {
         return await GetCollectionAsync<SiteSettingDto>(ApiEndpoints.AdminSettings);
     }
@@ -95,6 +95,25 @@ public class ApiSettingsService : ApiServiceBase, ISettingsService
         {
             Logger.LogError(ex, "Error on DELETE {Url}", url);
             return false;
+        }
+    }
+
+    public async Task<PublicSettingsResponse?> GetPublicSettingsAsync()
+    {
+        try
+        {
+            var response = await Http.GetAsync(ApiEndpoints.PublicSettings);
+            if (!response.IsSuccessStatusCode)
+            {
+                Logger.LogWarning("Failed {StatusCode} on GET {Url}", (int)response.StatusCode, ApiEndpoints.PublicSettings);
+                return null;
+            }
+            return await ApiResponseReader.ReadAsync<PublicSettingsResponse>(response);
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error on GET {Url}", ApiEndpoints.PublicSettings);
+            return null;
         }
     }
 }
